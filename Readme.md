@@ -12,7 +12,6 @@ Modifications
 *   Added Nginx compilation security flags
 *   Added Supervisor for Nginx availability monitoring
 *   Added additional build cleanups
-*   Removed examples
 *   Removed multi stagging build support
 
 Securing Docker Containers with a Web Application Firewall (WAF) built on ModSecurity and NGINX

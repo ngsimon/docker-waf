@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  waf:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/usr/local/nginx/conf/nginx.conf:ro
+
+  app:
+    image: crccheck/hello-world
+    expose:
+     - "8000"

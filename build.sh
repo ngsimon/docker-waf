@@ -1,7 +1,7 @@
 #!/bin/sh
 #update and install dependencies
 apt-get update
-apt-get install -y git wget build-essential libpcre3 libpcre3-dev libssl-dev libtool autoconf apache2-dev libxml2-dev libcurl4-openssl-dev supervisor libapr1 libapr1-dev
+apt-get install -y git wget build-essential libpcre3 libpcre3-dev libssl-dev libtool autoconf apache2-dev libxml2-dev libcurl4-openssl-dev supervisor libaprutil1
 
 #make modsecurity
 cd /usr/src/
@@ -54,8 +54,10 @@ mv /usr/local/nginx/conf/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf{.exam
 mv /usr/local/nginx/conf/rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf{.example,}
 
 apt-get purge -y build-essential wget git
-apt-get remove -qy --purge dpkg-dev apache2-dev libpcre3-dev libxml2-dev
+#apt-get remove -qy --purge dpkg-dev apache2-dev libpcre3-dev libxml2-dev
 apt-get -qy autoremove
+apt-get install -y --reinstall libaprutil1
+
 
 rm /nginx-$NGINX_VERSION.tar.gz
 rm -rf /usr/src/modsecurity/nginx/modsecurity
