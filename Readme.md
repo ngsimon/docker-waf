@@ -1,3 +1,20 @@
+Original Project
+====
+Based on the original project: https://github.com/theonemule/docker-waf
+
+Modifications
+====
+*   Created automated build on Dockerhub: lifenz/nginx-modsecurity-stable
+*   Updated Nginx version to the latest stable
+*   Using Modsecurity stable tags instead of master branch
+*   Using Ubuntu LTS stable version
+*   Using OWASP CSR stable version
+*   Added Nginx compilation security flags
+*   Added Supervisor for Nginx availability monitoring
+*   Added additional build cleanups
+*   Removed examples
+*   Removed multi stagging build support
+
 Securing Docker Containers with a Web Application Firewall (WAF) built on ModSecurity and NGINX
 ====
 
@@ -27,32 +44,8 @@ NGINX, though, is more than merely a web server. It can also act as a load balan
 
 Using the Dockerfile is simple. Change directories to the dockerfile, and build the image.
 
-**UPDATE:** There are two flavors to build this WAF. The Dockerfile.single is a classic Dockerfile Dockerfile.multi is using multi-stage builds in Docker.
 
 Classic:
 
 ```
-cp Dockerfile.single Dockerfile
 docker build --tag mywaf .
-```
-
-Multi-Stage Build:
-
-```
-cp Dockerfile.multi Dockerfile
-docker build --tag mywaf .
-```
-
-Then run it.
-
-```
-docker run --name my-container-name -p 80:80 mywaf
-```
-
-This creates container.
-
-Also, the image can be used with Docker Compose. The docker-compose.yml isa simple example that will deploy a simple node application along with the WAF. Change directories to the docker compose file, then run.
-
-```
-docker-compose up
-```
